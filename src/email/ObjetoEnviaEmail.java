@@ -19,11 +19,17 @@ public class ObjetoEnviaEmail {
 	private String nomeRemetente = "";
 	private String assuntoEmail = "";
 	private String corpoEmail = "";
+	private String copia = "";
 	
-	public ObjetoEnviaEmail(String listaDestinatario, String nomeRemetente, String assuntoEmail, String corpoEmail) {
+	public ObjetoEnviaEmail(String listaDestinatario, 
+							String nomeRemetente, 
+							String assuntoEmail, 
+							String copia, 
+							String corpoEmail) {
 		this.listaDestinatario = listaDestinatario;
 		this.nomeRemetente = nomeRemetente;
 		this.assuntoEmail = assuntoEmail;
+		this.copia = copia;
 		this.corpoEmail = corpoEmail;
 	
 	}
@@ -50,9 +56,11 @@ public class ObjetoEnviaEmail {
 		});
 		
 		Address[] toUser = InternetAddress.parse(listaDestinatario);
+		Address[] toUserCC = InternetAddress.parse(copia);
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(userName, nomeRemetente));
 		message.setRecipients(Message.RecipientType.TO, toUser);
+		message.setRecipients(Message.RecipientType.CC, toUserCC);
 		message.setSubject(assuntoEmail);
 		message.setContent(corpoEmail, "text/html; charset=utf-8");
 		

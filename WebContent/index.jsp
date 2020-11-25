@@ -25,7 +25,7 @@
        		.cobertura{
        			background-color: black;
        			width: 100%;
-       			height: 425px;
+       			height: 100%;
        			opacity: 0.5;
 			    display: none;
 			    z-index: 1;
@@ -50,6 +50,33 @@
   	<form action="email" method="post" name="formulario">
   		 <center><h1>Envio de EMAIL</h1></center>
   		 
+  		 <div class="input-group input-group-sm mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-sm">Nome Remetente</span>
+		  </div>
+		  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="nomeRemetente">
+		</div>
+  		 
+		<div class="input-group input-group-sm mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-sm">Destinatário *</span>
+		  </div>
+		  <input type="email" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="destinatario" required="required">
+		</div>
+		
+		<div class="input-group input-group-sm mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-sm">Em cópia</span>
+		  </div>
+		  <input type="email"  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="copia">
+		</div>
+		
+		<div class="input-group input-group-sm mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-sm">Assunto</span>
+		  </div>
+		  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="assunto">
+		</div>
 		
 		   <textarea name="email"></textarea>
 		   
@@ -70,7 +97,7 @@
     		   $(".cobertura").show();
     		   $(".btn").attr("disabled", "disabled");
     		   $(".btn").html("Enviando email...");
-    		   //return false;
+    		   return false;
     		 })
     	  
 

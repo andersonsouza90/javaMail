@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +27,10 @@ public class Email extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String email = request.getParameter("email");
-		String listaDestinatario = "andersonsouza.systems@gmail.com"; 
-		String nomeRemetente = "Dandy TESTE";
-		String assuntoEmail = "Chegou um email enviado com Java!";
+		String listaDestinatario = request.getParameter("destinatario"); 
+		String nomeRemetente = request.getParameter("nomeRemetente");
+		String assuntoEmail = request.getParameter("assunto");
+		String copia = request.getParameter("copia");
 		
 		StringBuilder corpoEmail = new StringBuilder();
 		corpoEmail.append(email);
@@ -39,6 +39,7 @@ public class Email extends HttpServlet {
 													listaDestinatario, 
 													nomeRemetente, 
 													assuntoEmail, 
+													copia,
 													corpoEmail.toString()
 													);
 		try {
