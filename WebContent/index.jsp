@@ -97,7 +97,7 @@
     		   $(".cobertura").show();
     		   $(".btn").attr("disabled", "disabled");
     		   $(".btn").html("Enviando email...");
-    		   return false;
+    		   //return false;
     		 })
     	  
 
